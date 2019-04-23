@@ -5,6 +5,7 @@ import SecureSocketChipV1.SSCV1;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.UUID;
 
 public class CommandExtentionClient {
 
@@ -21,7 +22,8 @@ public class CommandExtentionClient {
     }
 
     public String sendCommand(String command){
-        socket.getCom().sendMessage(command);
+        UUID uuid = UUID.randomUUID();
+        socket.getCom().sendMessage(command + " " + uuid);
         return "test";
     }
 }
