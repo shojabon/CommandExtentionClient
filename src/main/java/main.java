@@ -13,6 +13,7 @@ public class main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        com.sendCommand("test");
+        String a = com.sendCommand("test");
+        System.out.println(a);
     }
 }
