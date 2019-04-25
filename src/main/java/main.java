@@ -9,7 +9,7 @@ public class main {
     public static void main(String[] args){
         CommandExtentionClient com = new CommandExtentionClient("127.0.0.1", 10000);
         try {
-            sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
