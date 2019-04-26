@@ -26,8 +26,15 @@ public class CommandExtentionClient extends SSCEvent {
     public String sendCommand(String command){
         UUID uuid = UUID.randomUUID();
         socket.getCom().sendMessage(command + " " + uuid);
-        while(!socket.ifReturnReturned(uuid.toString())){}
-        return socket.getReturn(uuid.toString());
+        long startTime = System.currentTimeMillis()/1000;
+        while(!socket.ifReturnReturned(uuid.toString())){
+            if(System.currentTimeMillis()/1000 > startTime+20){
+                return null;
+            }
+        }
+        String a = socket.getReturn(uuid.toString());
+        socket.removeReturnMap(uuid.toString());
+        return a;
     }
 
     @Override
